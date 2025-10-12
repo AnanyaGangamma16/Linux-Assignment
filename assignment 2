@@ -1,0 +1,106 @@
+Name: Ananya Gangamma M C
+USN: ENG24CY0006
+Section: 3 – C
+Roll Number : 33
+1.	What does the command pwd, whoami, and hostname display? (CO1) 
+Pwd – print working directory
+Prints the present working directory (current folder path).
+Example: ananya㉿kali)-[~]
+└─$ pwd
+/home/ananya
+whoami
+Prints the current logged-in user’s name.
+Example: (ananya㉿kali)-[~]
+└─$ whoami
+Ananya
+Hostname
+The hostname command shows or sets the system hostname.
+(ananya㉿kali)-[~]
+└─$ hostname   
+kali
+2.	Write the command to create a directory named “project” inside the /home/student folder and keep three .txt file into it. Give output snapshot. (CO1) 
+(ananya㉿kali)-[/home]
+└─$ cd student
+                                                                                
+┌──(ananya㉿kali)-[/home/student]
+└─$ sudo mkdir project
+                                                                                
+┌──(ananya㉿kali)-[/home/student]
+└─$ cd project
+┌──(ananya㉿kali)-[/home/student/project]
+└─$ sudo touch file1.txt file2.txt file3.txt
+                                                                                
+┌──(ananya㉿kali)-[/home/student/project]
+└─$ ls
+file1.txt  file2.txt  file3.txt
+ 
+3. Explain the difference between absolute path and relative path with proper examples. (CO2) 
+Absolue path	Relative path
+Complete path from root directory to target	Path from current working directory to target
+Always starts with/	Never starts with with/
+Independent of current location	Depends on current working directory
+Works from any directory	Only works from specific
+/home/paul/documents/file.txt	Documents/file.txt or../ shared/data.txt
+
+4. What command will give you the already executed command traces in the terminal. Give output snapshot. (CO1) 
+History
+cat ~/.bash_history      
+
+5. Compare the working functionality of find and locate command. Which one is faster and why? (CO1)
+A:find command:searches for files and directories in real time by scanning the directory tree.
+Syntax:find /path-name filename
+locate command:searches for files using a pre-built database
+Syntax:locate filename
+Therefore,locate is faster because it uses a pre-indexed database instead of scanning directories in real time.
+find is more accurate and real-time,but comparatively slower.
+
+ 6. Which command is used to modify file permissions in Linux? Give an example. (CO1)
+chmod command: The chmod command changes file permissions. Syntax: chmod [options] mode file
+Example:Symbolic mode:
+chmod u+x my_script.sh
+chmod g-w my_file.txt
+chmod 0=rwx my_dir/
+Example:Octal node:
+chmod 755 my_program
+chmod 644 my_document
+
+ 7. A file has permissions -rw -r- -r- -. What does this mean? (CO1)
+:    - = it is regular file
+rw- = owner can have read and write permission
+r-- = group can have only read permission
+r-- = others can also have permission for only read 
+
+ 8. Explain the difference between chown and chgrp with an example. (CO1)
+A: chown command: The chown command changes file ownership. Syntax: chown [options] owner:group file
+Example:
+1.Change the owner of a file
+sudo chown alice file.txt
+2.Change both owner and group
+sudo chown bob:developers project.zip
+3.Change recursively
+sudo chown -R bob:bob 
+chgrp command:changes the group only
+Example:
+1.Change group of a file
+sudo chgrp staff report.doc
+2.Change group recursively
+sudo chgrp -R developers
+3.Change with Is -I to check changes
+Is -l file.txt
+
+ 9. A file needs to be accessible by multiple users but only writable by the owner. How will you set permissions? (CO1)
+A:chmod 644 filename       -rw-r--r-- (644):
+rw- owner can read and write
+r- - group only read 
+r- - others only read
+Example:
+$ ls -l myfile.txt
+-rw-r--r-- 1 alice users 120 Sep 27 10:30 myfile.txt
+ 
+10. How do you check the manual page for any Linux commands? (CO1)
+A:Syntax: man [command_name]
+To view for ls command:
+man ls
+To view a man from a specific section:
+man [section_number] [command_name]
+
