@@ -1,0 +1,84 @@
+Name: Ananya Gangamma M C
+USN: ENG24CY0006
+Section: 3 – C
+Roll Number: 33
+1.	Distinguish between man and whatis commands? Justify with proper example. (CO1)
+A:
+	man	Whatis
+Purpose	Detailed manual	Brief describtion
+Output	Full mnual pages	Single line summary
+Use Cae	Learn how to use commands	Quick check of command purpose
+Example	man	whatis
+2.	Use the tee command to save the output of ls -l into a file while also displaying it. (CO4)
+A: ls -l | tee output.txt
+3.	Explain with an example how the tee command can be used in logging. (CO4)
+A: The tee command can be applied frequently when logging to save the output of a command in a file while continuing to display it on the terminal. This comes in handy for scripts or long-running processes where you wish to see progress in real-time and also save a record to analyze later.
+Example:  you have a script that displays all files in a directory along with disk usage:
+echo "Starting the logging process."
+ls -l
+df -h
+echo "Process completed."To get and print output and also it have logged ,then we can use tee:
+./script.sh | tee log.txt
+If you use this command several times then we can use append to log instead of over writing it:
+./script.sh | tee -a log.txt
+
+4. List the steps involved in installing Ubuntu 25.04 LTS on Oracle VirtualBox. (CO2)
+A: Steps to Install Ubuntu 25.04 LTS on Oracle VirtualBox
+1. Download Needed Software
+Oracle VirtualBox: Visit VirtualBox website
+and download appropriate version for your OS (Windows/Mac/Linux).
+Ubuntu 25.04 ISO: Download from official Ubuntu releases page
+2. Install VirtualBox
+Install the installer and follow the steps.
+Accept the default settings unless you have special requirements.
+3. Create a New Virtual Machine
+Open VirtualBox → Click New.
+Enter Name: e.g., Ubuntu 25.04.
+Type: Linux
+Version: Ubuntu (64-bit)
+Click Next.
+4. Allocate Memory (RAM)
+Select memory size (recommended: 4096 MB or greater for smooth operation).
+Click Next.
+5. Create a Virtual Hard Disk
+Select Create a virtual hard disk now → Create.
+Hard disk file type: VDI (VirtualBox Disk Image) → Next.
+Storage on physical hard disk: Dynamically allocated → Next.
+Set size: 20 GB or greater → Create.
+6. Configure the Virtual Machine
+Select the VM → Click Settings.
+Go to Storage → Under Controller: IDE → Click on the blank CD icon.
+Click Choose a disk file → Select the downloaded Ubuntu 25.04 ISO.
+Optional: Under System → Processor, assign 2 or more CPUs for improved performance.
+7. Launch the Virtual Machine
+Click Start → Ubuntu will boot up from the ISO.
+8. Install Ubuntu
+Click Install Ubuntu from the boot menu.
+Select Keyboard Layout → Next.
+Updates and Other Software → Select Normal installation.
+Installation type → Choose Erase disk and install Ubuntu (safe within VM).
+Set Time zone → Next.
+Create User account → Username and password.
+Click Install → Wait for installation to finish.
+9. Restart the Virtual Machine
+When installation is complete, click Restart Now.
+Unmount from Storage settings if asked to remove the ISO.
+10. Post-Installation Setup
+Log in with your details.
+5. During Ubuntu OS installation, you face a Kernel Panic Error. How would you troubleshoot it? (CO3)
+A: A kernel panic during Ubuntu installation is frequently due to damaged media, incompatible hardware, low resources, or wrong boot parameters. Begin with ISO verification, VM or BIOS configuration adjustments, and the implementation of boot options such as nomodeset to skip faulty drivers.
+6.Write the command to display the system’s hostname? How to change hostname using sysctl command? (CO1)
+A: hostname command: The hostname command shows or sets the system hostname. Syntax: hostname [options]
+  sysctl -w kernel.hostname=newhostname → Temporary change
+  Edit /etc/sysctl.conf → Permanent change
+7. Which command is used to show the calendar of the year 1984 with August month? (CO1)
+A:cal command
+cal 6 1984
+8. Write a command to display system uptime and logged-in users together. (CO3)
+A:uptime; who
+9. Use the find command to list all “.c” files in /home/user. (CO1)
+A: find /home/user -type f -name "*.c"
+10. How do you change file permissions to allow only the owner to read and write?
+(CO1)
+A:chmod 600 filename
+
