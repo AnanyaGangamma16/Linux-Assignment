@@ -1,0 +1,110 @@
+Name:Ananya Gangamma  M C
+USN:ENG24CY0006
+Section: 3 – C
+Roll Number: 33
+1.	What is Linux? List the pros and cons
+Linux is an open-source family of Unix-like operating systems based on the Linux kernel (originally by Linus Torvalds). A typical “Linux OS” is a distribution (distro) that bundles the kernel with userland tools, package management, and installable software.
+Pros
+1.	Open source / auditable — source code available; anyone can inspect & modify.
+2.	Stability & robustness — widely used on servers and critical infrastructure; strong networking and process control.
+3.	Customisability & variety — choose a minimal kernel-only system, a server distro, or a full desktop; huge ecosystem.
+Cons
+1.	Hardware/driver gaps — some vendor-proprietary hardware can have limited support (though this has improved).
+2.	Desktop software compatibility — some mainstream desktop apps (commercial Windows/macOS apps) may not run natively.
+3.	Fragmentation learning curve — many distros, package managers, init systems can be confusing for beginners.
+2.	 Differentiate Linux, macOS, Android, and Windows — 6 unique features each (CO1)
+Linux (typical distro)
+•	Kernel: monolithic Linux kernel (open source).
+•	Licensing: mostly GPL/LGPL (free & open).
+•	Package management: apt/yum/pacman/zypper etc.
+•	Target: servers, desktops, embedded, supercomputers.
+•	Customisability: users can rebuild kernel, choose init, filesystem, desktop.
+•	Community & distros: many distributions and community-driven releases.
+macOS (Apple)
+•	Kernel: XNU (hybrid) with Apple proprietary layers (Darwin is open parts).
+•	Licensing: mix of open (Darwin) and heavy proprietary UI/apps.
+•	Tight hardware-software integration: runs only on Apple hardware (officially).
+•	Ecosystem: native Cocoa/Swift UI frameworks, tightly integrated Apple apps/services.
+•	App distribution: App Store + notarization rules and signed binaries.
+•	Commercial support/UX: strong focus on polished UX and ecosystem (iCloud, Continuity).
+Android (Google)
+•	Kernel: Linux kernel (modified for mobile) + Android runtime (ART).
+•	Target: mobile / tablets / some embedded devices.
+•	App model: APKs / Play Store, sandboxed apps with manifest permissions.
+•	UI/UX: optimized for touch and battery/thermal/power management.
+•	Update model: fragmentation (OS updates depend on OEM/carrier).
+•	Java/Kotlin app ecosystem and Google Play services (on most devices).
+Windows (Microsoft)
+•	Kernel: NT kernel (proprietary).
+•	App ecosystem: Win32 + UWP + .NET; strongest desktop application availability (games, enterprise apps).
+•	Hardware support: very broad driver ecosystem (PC market leader).
+•	Licensing: proprietary commercial licenses (retail, OEM, volume).
+•	Enterprise tools: Active Directory, Group Policy, Microsoft ecosystem integration.
+•	Gaming & commercial software: best support for many commercial desktop apps and games. 
+3.	 Why is Linux preferred for mainframe / legacy-app servers? — 3 technical reasons (CO1)
+(“Mainframe” here includes large enterprise server platforms and modern mainframe-class machines running enterprise workloads.)
+1.	Stability & long lifecycle / maintainability: Linux kernels and enterprise distros (RHEL, SLES) provide long-term support (patches, backports) suitable for decades-long enterprise workloads.
+2.	Customisable resource control & scalability: Linux has advanced kernel features for resource control (cgroups), NUMA scheduling, high-performance I/O stacks and tunables that can be adapted to legacy apps needing specific performance profiles.
+3.	Extensive driver & virtualization support: Mature virtualization (KVM), containerization (LXC, Docker), and support for a broad range of hardware & storage interfaces lets legacy software run in isolated, supported environments on modern hardware.
+4.	Explain the structure of the Linux File System with proper diagram. (CO2)
+Linux follows a hierarchical file system starting with the root directory '/'. Everything (files, devices, programs) exists under this root.
+
+Example using the tree command:
+/
+├── bin    (essential commands)
+├── etc    (configuration files)
+├── home   (user files)
+├── lib    (libraries)
+├── root   (root user home)
+├── var    (logs, variable data)
+└── usr    (user applications)
+5.	If Linux is open-source, how does Red Hat make money? — market study (CO2)
+Short summary (key revenue sources):
+1.	Subscriptions for enterprise support, maintenance and updates — RHEL (Red Hat Enterprise Linux) subscription customers pay for tested, certified builds, security patches, and long-term support. This guarantees stability and compliance for enterprises
+2.	Professional services & consulting — Red Hat sells implementation, migration, integration, and consulting services (helping customers deploy at scale). 
+3.	Certified ecosystem & product portfolio — revenue from certified middleware, hybrid cloud products (OpenShift), automation (Ansible), training, certifications, and partner ISV certification. These are bundled or sold as managed/paid offerings. 
+4.	Strategic enterprise deals & platform lock-in value — large customers (banks, telcos, government) pay for predictable enterprise SLAs and lifecycle guarantees; IBM’s acquisition (and IBM reporting) shows Red Hat contributes materially to IBM’s software revenue growth. 
+Why this works despite open source
+•	Value is operations & assurance, not code exclusivity: companies pay for vetted, stable builds, security backports, certified compatibility, and enterprise SLAs. Red Hat provides the human & process guarantee needed for production systems. 
+•	Ecosystem and certified integrations: enterprises need tested stacks (RHEL+middleware+containers), vendor certification for third-party enterprise apps (Oracle, SAP), and commercial support for regulatory compliance.
+•	Diversified product & cloud offerings: beyond RHEL, Red Hat sells OpenShift (Kubernetes platform), Ansible automation, and professional services, all generating recurring revenue. 
+Recent signals & business scale (market evidence):
+•	Red Hat has been a revenue engine inside IBM since acquisition — IBM public reports highlight Red Hat growth driving software revenue. (IBM newsroom: Red Hat acceleration cited in earnings
+•	Command to display today's date/time (current system time)
+6.	 Write the command to display today’s date and time (i.e., current System time). (CO1)
+     date (date "+%Y-%m-%d %H:%M:%S")
+7.	Which command shows how long the system has been running?
+uptime or cat /proc/uptime
+8.	Difference between shutdown -h now and halt (CO1)
+•	shutdown -h now — tells init/systemd to bring the system down cleanly, stop services in the correct order, unmount filesystems, sync disks, and then halt/poweroff. It communicates to the init system to perform orderly shutdown.
+•	halt — historically stops the CPU (halts) but depending on the distribution and systemd behavior, halt may not power off the machine; on modern systems halt is often a wrapper that asks init/systemd to halt. halt may be less explicit about powering off; on some systems halt can be forced and may skip some shutdown steps if used with force flags.
+Bottom line: shutdown -h now is the safer, more explicit command to request a clean shutdown via the init/systemd path.
+9.	Compare init 0 and shutdown -h — which is safer? Why? (CO1)
+•	init 0 — tells SysV init to switch to runlevel 0 (halt). In older SysV systems this triggers the runlevel scripts to stop services. On modern systemd systems init is an alias that maps to systemd equivalents but may be deprecated.
+•	shutdown -h — explicitly requests an orderly halt using the shutdown machinery (announces to logged-in users, runs shutdown scripts, stops services cleanly, syncs and unmounts filesystems).
+Which is safer? shutdown -h is generally safer because it is designed for an orderly shutdown: it notifies users, schedules and runs shutdown hooks, and asks the init system to stop services and unmount filesystems. init 0 is older, more abrupt historically, and halt/init behaviors can vary by distro. So prefer shutdown -h (or systemctl poweroff) for safe production shutdown.
+10.	If a sysadmin powers off a server without shutting it down properly — possible problems (CO2)
+1.	Filesystem corruption / journal recovery — unflushed data in caches can cause filesystem inconsistency; journaling filesystems may recover but some data loss possible.
+2.	Database corruption / lost transactions — DBMS (MySQL, Postgres) may be left in an inconsistent state or lose recent transactions if not properly checkpointed.
+3.	Service/data corruption — in-flight writes, application state, or temporary files can be corrupted leading to service failures on restart.
+4.	RAID/volume metadata issues — abrupt power loss can cause RAID controllers or LVM metadata problems (rare but possible).
+5.	Hardware risk — repeated sudden power offs can stress storage (esp. older HDDs) and controllers; caches in hardware might lose data.
+6.	Longer recovery time / business impact — unplanned downtime, longer boot/recovery, manual repairs and possible need for fsck and DB restore from backups.
+As Linux Kernel is open-source, can we build our own operating system?
+Yes. You can build your own OS in two main ways:
+•	Build a distribution (most common): use the Linux kernel and assemble your own userland, packages, installer, and UI (this is how most “new OS” projects start).
+•	Write a from-scratch OS / kernel: possible but much harder — you’d write your own kernel, drivers, and userland (this is rare and very complex).
+b) Stoppers / hurdles / challenges
+1.	Hardware support & drivers: writing or integrating drivers for diverse hardware is time-consuming.
+2.	Security & updates: maintaining timely security patches and update channels is a long-term commitment.
+3.	Ecosystem & apps: attracting developers and applications (or providing compatibility layers) is essential for adoption.
+4.	Testing & QA at scale: ensuring stability across many hardware/VM/cloud platforms requires resources.
+5.	Funding & sustainment: keeping the project updated, handling CVEs, and supporting users requires ongoing funding or community.
+6.	Certification/compliance (enterprise/government): meeting standards and support SLAs for large customers.
+7.	Distribution & packaging tooling: building reliable installers, package managers, repositories, mirrors.
+c) Is anyone in India working on this? — at least 3–4 engineers / projects (with sources)
+1.	Ankita Garg — has been a Linux kernel developer (Linux Technology Centre / IBM) and author of kernel articles; active in kernel/RT topics. 
+2.	Ananth N. (Ananth N Mavinakayanahalli / Ananth Narayan) — long-time Linux kernel contributor / IBM/AMD engineer associated with kernel work. 
+3.	Kumar Priyansh (BackSlash Linux) — developer of an Indian Linux distribution BackSlash Linux (example of a “made in India” distro). 
+4.	Contributors listed in Indian FOSS communities — FSCI / BOSS contributors include names like Anand Avati, Anil Gulecha, Anant Narayanan, Prasanna Panchamukhi who have contributed to distros, kernel, or related projects in India. (Good starting list to research specific contributions).
+
